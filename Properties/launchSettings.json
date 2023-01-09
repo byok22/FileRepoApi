@@ -34,7 +34,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_STARTUP_HOOKS": "C:\\Public\\TestProjects\\WebApi\\Metrics\bin\\Release\net7.0\\win10-x64\\Metrics.dll",
+        "CONNECTION_STRING":"Server=(localdb)\\mssqllocaldb;Database=Cars;Trusted_Connection=True;"
       }
     }
   }
