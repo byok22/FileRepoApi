@@ -1,4 +1,4 @@
-namespace TodoApi
+namespace TodoApi.Aplication
 {
      public interface IGenericRepository<T> where T : class
      {

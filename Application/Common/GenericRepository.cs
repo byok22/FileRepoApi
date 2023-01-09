@@ -1,13 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Infrastructure.Persistance;
 
-namespace TodoApi
+namespace TodoApi.Aplication
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly TE_TestProductivityContext _context;
         private readonly DbSet<T> _dbSet;
-
+        
+        public GenericRepository()
+        {
+            _context = new TE_TestProductivityContext();
+            _dbSet = _context.Set<T>();
+        }
         public GenericRepository(TE_TestProductivityContext context)
         {
             _context = context;
