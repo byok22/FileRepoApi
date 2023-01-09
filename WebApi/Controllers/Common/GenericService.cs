@@ -1,16 +1,30 @@
+using TodoApi.Aplication;
+using TodoApi.Infrastructure.Persistance;
+
 namespace TodoApi.Controllers.Common
 {
     public class GenericService<T>: IGenericService<T> where T : class
     {
-        private readonly IGenericRepository<T> _repository;
+        private readonly IGenericRepository<T> _repository = new GenericRepository<T>();
+      
+        public GenericService()
+        {
+            
+        }
         public GenericService(IGenericRepository<T> repository)
         {
             _repository = repository;
         }
-
+        
+      
         public async Task<T> Create(T entity)
         {
             return await _repository.Add(entity);
+        }
+
+        public Task Delete(T entity)
+        {
+            return _repository.Delete(entity);
         }
 
         public async Task<T> Get(int id)

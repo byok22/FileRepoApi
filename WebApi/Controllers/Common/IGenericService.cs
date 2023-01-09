@@ -6,5 +6,7 @@ namespace TodoApi.Controllers.Common
         Task<T> Get(int id);
         Task<IEnumerable<T>> GetAll();
         Task Update(T entity);
+
+        Task Delete(T entity);
     }
 }
