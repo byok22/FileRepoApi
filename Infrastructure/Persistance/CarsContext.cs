@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace TodoApi;
+namespace TodoApi.Models;
 
 public partial class CarsContext : DbContext
 {
