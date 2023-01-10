@@ -20,8 +20,8 @@ public class SCUserController : ControllerBase, IActionResult
         throw new NotImplementedException();
     }
     
-    [Route("CreateSCUser")] 
-    [HttpPost(Name = "CreateSCUser")]
+    [Route("Create")] 
+    [HttpPost(Name = "Create")]
     public async Task<IActionResult> CreateSCUser([FromBody] ScUser scUser)
     {
         _logger.LogInformation("CreateSCUser");
@@ -32,7 +32,7 @@ public class SCUserController : ControllerBase, IActionResult
 
     
 
-    [Route("GetSCUser/{id}")]
+    [Route("Get/{id}")]
     [HttpGet]
     public async Task<IActionResult> GetSCUser(int id)
     {
@@ -44,7 +44,7 @@ public class SCUserController : ControllerBase, IActionResult
         return Ok(scUser);
     }
 
-    [Route("GetAllSCUsers")]
+    [Route("GetAll")]
     [HttpGet]
     public async Task<IActionResult> GetAllSCUsers()
     {
@@ -52,18 +52,24 @@ public class SCUserController : ControllerBase, IActionResult
         var scUsers = await _service.GetAll();
         return Ok(scUsers);
     }
-    [Route("UpdateSCUser")]
+    [Route("Update")]
     [HttpPut]
     public async Task<IActionResult> UpdateSCUser([FromBody] ScUser scUser)
     {
         await _service.Update(scUser);
         return Ok(scUser);
     }
-    [Route("DeleteSCUser")]
+    [Route("Delete/{id}")]
     [HttpDelete]
-    public async Task<IActionResult> DeleteSCUser([FromBody] ScUser scUser)
+    public async Task<IActionResult> DeleteSCUser(int id)
     {
+        var scUser = await _service.Get(id);
+        if (scUser == null)
+        {
+            return NotFound();
+        }
         await _service.Delete(scUser);
         return Ok(scUser);
     }
+    
 }
