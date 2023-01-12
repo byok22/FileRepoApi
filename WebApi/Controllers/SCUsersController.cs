@@ -9,12 +9,14 @@ using TodoApi.Infrastructure.Persistance;
 public class SCUserController : ControllerBase, IActionResult
 {
     private readonly ILogger<SCUserController> _logger;
-    private readonly IGenericService<ScUser> _service = new GenericService<ScUser>(); 
+    private readonly IGenericService<SCUserModel> _service;
 
-    public SCUserController(ILogger<SCUserController> logger)
+    public SCUserController(ILogger<SCUserController> logger, IGenericService<SCUserModel> service)
     {
         _logger = logger;
+        _service = service;
     }
+   
     public Task ExecuteResultAsync(ActionContext context)
     {
         throw new NotImplementedException();
@@ -22,7 +24,7 @@ public class SCUserController : ControllerBase, IActionResult
     
     [Route("Create")] 
     [HttpPost(Name = "Create")]
-    public async Task<IActionResult> CreateSCUser([FromBody] ScUser scUser)
+    public async Task<IActionResult> CreateSCUser([FromBody] SCUserModel scUser)
     {
         _logger.LogInformation("CreateSCUser");
         await _service.Create(scUser);
@@ -54,7 +56,7 @@ public class SCUserController : ControllerBase, IActionResult
     }
     [Route("Update")]
     [HttpPut]
-    public async Task<IActionResult> UpdateSCUser([FromBody] ScUser scUser)
+    public async Task<IActionResult> UpdateSCUser([FromBody] SCUserModel scUser)
     {
         await _service.Update(scUser);
         return Ok(scUser);
