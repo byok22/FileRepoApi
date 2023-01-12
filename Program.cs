@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using TodoApi;
+using TodoApi.Aplication;
+using TodoApi.Controllers.Common;
 using TodoApi.Infrastructure.Persistance;
 using TodoApi.Models;
 
@@ -13,6 +16,9 @@ builder.Services.AddDbContext<CarsContext>(opt =>
     opt.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Cars;Trusted_Connection=True;"));
 builder.Services.AddDbContext<TE_TestProductivityContext>(opt =>
     opt.UseSqlServer("Server=AWUEA1GDLSQL41;Database=TE_TestProductivity;Trusted_Connection=True;Trust Server Certificate=true;"));
+builder.Services.AddScoped<IGenericRepository<SCUserModel> , SCUsersRepository>();
+builder.Services.AddScoped<IGenericRepository<ScUser> , GenericRepository <ScUser>>();
+builder.Services.AddScoped<IGenericService<SCUserModel> , GenericService <SCUserModel>>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
