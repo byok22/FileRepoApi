@@ -5,7 +5,7 @@ namespace TodoApi.Controllers.Common
 {
     public class GenericService<T>: IGenericService<T> where T : class
     {
-        private readonly IGenericRepository<T> _repository = new GenericRepository<T>();
+        private readonly IGenericRepository<T> _repository;
       
         public GenericService()
         {
