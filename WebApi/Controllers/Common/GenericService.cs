@@ -1,5 +1,4 @@
 using TodoApi.Aplication;
-using TodoApi.Infrastructure.Persistance;
 
 namespace TodoApi.Controllers.Common
 {
