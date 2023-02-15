@@ -37,6 +37,7 @@ namespace TodoApi
              var entityToDelete = _repository.GetById(entity.id).Result;
              return _repository.Delete(entityToDelete);
         }
+        
 
         public Task<IEnumerable<SCUserModel>> GetAll()
         {

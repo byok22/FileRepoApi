@@ -19,6 +19,7 @@ builder.Services.AddDbContext<TE_TestProductivityContext>(opt =>
 builder.Services.AddScoped<IGenericRepository<SCUserModel> , SCUsersRepository>();
 builder.Services.AddScoped<IGenericRepository<ScUser> , GenericRepository <ScUser>>();
 builder.Services.AddScoped<IGenericService<SCUserModel> , GenericService <SCUserModel>>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
